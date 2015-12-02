@@ -220,9 +220,30 @@
     <Compile Include="Models\comentario.cs">
       <DependentUpon>ToDoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\comentarios1.cs">
+      <DependentUpon>TarefasModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\tarefa.cs">
       <DependentUpon>ToDoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tarefas1.cs">
+      <DependentUpon>TarefasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TarefasModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TarefasModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TarefasModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TarefasModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TarefasModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TarefasModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ToDoModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -288,6 +309,23 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ToDoModel.edmx</DependentUpon>
       <LastGenOutput>ToDoModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\TarefasModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TarefasModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TarefasModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TarefasModel.edmx</DependentUpon>
+      <LastGenOutput>TarefasModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TarefasModel.edmx.diagram">
+      <DependentUpon>TarefasModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TarefasModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TarefasModel.edmx</DependentUpon>
+      <LastGenOutput>TarefasModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

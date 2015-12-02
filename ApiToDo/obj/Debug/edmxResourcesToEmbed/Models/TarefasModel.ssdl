@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tarefasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="comentarios1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comentarios" Type="varchar" MaxLength="255" />
+    <Property Name="tarefas_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tarefas1">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descricao" Type="varchar" MaxLength="50" />
+    <Property Name="concluido" Type="char" MaxLength="1" />
+  </EntityType>
+  <Association Name="FK__comentari__id_ta__1273C1CD">
+    <End Role="tarefas1" Type="Self.tarefas1" Multiplicity="1" />
+    <End Role="comentarios1" Type="Self.comentarios1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tarefas1">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comentarios1">
+        <PropertyRef Name="tarefas_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tarefasModelStoreContainer">
+    <EntitySet Name="comentarios1" EntityType="Self.comentarios1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tarefas1" EntityType="Self.tarefas1" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__comentari__id_ta__1273C1CD" Association="Self.FK__comentari__id_ta__1273C1CD">
+      <End Role="tarefas1" EntitySet="tarefas1" />
+      <End Role="comentarios1" EntitySet="comentarios1" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

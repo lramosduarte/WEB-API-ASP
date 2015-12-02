@@ -12,10 +12,11 @@ namespace ApiToDo.Controllers
     public class ComentariosController : ApiController
     {
         private todosEntities db = new todosEntities();
-        public Dictionary<string, IEnumerable<comentario>> Get()
+        private tarefasEntitiesNew teste = new tarefasEntitiesNew();
+        public Dictionary<string, IEnumerable<comentarios1>> Get()
         {
-            var lista = db.comentarios.AsEnumerable();
-            var dict = new Dictionary<string, IEnumerable<comentario>>();
+            var lista = teste.comentarios1.AsEnumerable();
+            var dict = new Dictionary<string, IEnumerable<comentarios1>>();
             dict.Add("comentario", lista);
             
             return dict;

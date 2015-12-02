@@ -1,5 +1,6 @@
 ﻿using ApiToDo.Models;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,20 +14,17 @@ namespace ApiToDo.Controllers
 {
     public class ToDosController : ApiController
     {
-        todosEntities db = new todosEntities();
-
-        public Dictionary<string,IEnumerable<tarefa>> Get()
+        private todosEntities db = new todosEntities();
+        private tarefasEntitiesNew teste = new tarefasEntitiesNew();
+        public Dictionary<string, IEnumerable<tarefas1>> Get()
         {
-            
-            var lista = db.tarefas.AsEnumerable();
-            var dict = new Dictionary<string, IEnumerable<tarefa>>();
+            var lista = teste.tarefas1.AsEnumerable();
+            var dict = new Dictionary<string, IEnumerable<tarefas1>>();
             dict.Add("todos", lista);
-            string jsonFile = JsonConvert.SerializeObject(dict);
-            Dictionary<string, IEnumerable<tarefa>> dict2 = JsonConvert.DeserializeObject<Dictionary<string, IEnumerable<tarefa>>>(jsonFile);
-
+            
             return dict;
         }
-        
+
         public tarefa Get(int id)
         {
             var lista = db.tarefas.Find(id);
@@ -35,20 +33,20 @@ namespace ApiToDo.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]tarefa value)
+        public HttpResponseMessage Post([FromBody]tarefas1 value)
         {
             if (ModelState.IsValid)
             {
                 value.concluido = Convert.ToString("0");
-                db.tarefas.Add(value);
-                db.SaveChanges();
+                teste.tarefas1.Add(value);
+                teste.SaveChanges();
             }
 
             return new HttpResponseMessage(HttpStatusCode.Created);
 
         }
 
-        public void Put(int id, [FromBody]tarefa value)
+        public void Put(int id, [FromBody]tarefas1 value)
         {
             value.id = id;
                 
@@ -56,19 +54,19 @@ namespace ApiToDo.Controllers
                     value.concluido = "0";
                 else
                     value.concluido = "1";
-                db.Entry(value).State = EntityState.Modified;
-                db.SaveChanges();
+                teste.Entry(value).State = EntityState.Modified;
+                teste.SaveChanges();
             
         }
 
         [HttpDelete]
         public void Delete(int id)
         {
-             tarefa item = db.tarefas.Find(id);
+            tarefas1 item = teste.tarefas1.Find(id);
             if (item != null)
             {
-                db.tarefas.Remove(item);
-                db.SaveChanges();
+                teste.tarefas1.Remove(item);
+                teste.SaveChanges();
             }
         }
     }

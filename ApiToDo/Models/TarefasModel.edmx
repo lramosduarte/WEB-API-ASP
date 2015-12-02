@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tarefasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="comentarios1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comentarios" Type="varchar" MaxLength="255" />
+          <Property Name="tarefas_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tarefas1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="50" />
+          <Property Name="concluido" Type="char" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK__comentari__id_ta__1273C1CD">
+          <End Role="tarefas1" Type="Self.tarefas1" Multiplicity="1" />
+          <End Role="comentarios1" Type="Self.comentarios1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tarefas1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentarios1">
+              <PropertyRef Name="tarefas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tarefasModelStoreContainer">
+          <EntitySet Name="comentarios1" EntityType="Self.comentarios1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tarefas1" EntityType="Self.tarefas1" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__comentari__id_ta__1273C1CD" Association="Self.FK__comentari__id_ta__1273C1CD">
+            <End Role="tarefas1" EntitySet="tarefas1" />
+            <End Role="comentarios1" EntitySet="comentarios1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tarefasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="comentarios1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comentarios" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tarefas_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tarefas1" Relationship="Self.FK__comentari__id_ta__1273C1CD" FromRole="comentarios1" ToRole="tarefas1" />
+        </EntityType>
+        <EntityType Name="tarefas1">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="concluido" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="comentarios1" Relationship="Self.FK__comentari__id_ta__1273C1CD" FromRole="tarefas1" ToRole="comentarios1" />
+        </EntityType>
+        <Association Name="FK__comentari__id_ta__1273C1CD">
+          <End Role="tarefas1" Type="Self.tarefas1" Multiplicity="1" />
+          <End Role="comentarios1" Type="Self.comentarios1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tarefas1">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comentarios1">
+              <PropertyRef Name="tarefas_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tarefasEntitiesNew" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="comentarios1" EntityType="Self.comentarios1" />
+          <EntitySet Name="tarefas1" EntityType="Self.tarefas1" />
+          <AssociationSet Name="FK__comentari__id_ta__1273C1CD" Association="Self.FK__comentari__id_ta__1273C1CD">
+            <End Role="tarefas1" EntitySet="tarefas1" />
+            <End Role="comentarios1" EntitySet="comentarios1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tarefasModelStoreContainer" CdmEntityContainer="tarefasEntitiesNew">
+          <EntitySetMapping Name="comentarios1">
+            <EntityTypeMapping TypeName="tarefasModel.comentarios1">
+              <MappingFragment StoreEntitySet="comentarios1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+                <ScalarProperty Name="tarefas_id" ColumnName="tarefas_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tarefas1">
+            <EntityTypeMapping TypeName="tarefasModel.tarefas1">
+              <MappingFragment StoreEntitySet="tarefas1">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
+                <ScalarProperty Name="concluido" ColumnName="concluido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

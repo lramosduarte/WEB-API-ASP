@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tarefasModelStoreContainer" CdmEntityContainer="tarefasEntitiesNew">
+    <EntitySetMapping Name="comentarios1">
+      <EntityTypeMapping TypeName="tarefasModel.comentarios1">
+        <MappingFragment StoreEntitySet="comentarios1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+          <ScalarProperty Name="tarefas_id" ColumnName="tarefas_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tarefas1">
+      <EntityTypeMapping TypeName="tarefasModel.tarefas1">
+        <MappingFragment StoreEntitySet="tarefas1">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="concluido" ColumnName="concluido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

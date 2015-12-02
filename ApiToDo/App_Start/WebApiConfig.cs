@@ -16,7 +16,7 @@ namespace ApiToDo
             
             //confg cors
             var cors = new EnableCorsAttribute("*", "*", "*");
-            config.EnableCors(cors);//(cors);
+            config.EnableCors(cors);
             
             // Web API configuration and services
             
