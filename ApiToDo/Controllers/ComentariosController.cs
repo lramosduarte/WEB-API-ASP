@@ -16,7 +16,7 @@ namespace ApiToDo.Controllers
         {
             var lista = db.comentarios.AsEnumerable();
             var dict = new Dictionary<string, IEnumerable<comentario>>();
-            dict.Add("comentarios", lista);
+            dict.Add("comentario", lista);
             
             return dict;
         }
