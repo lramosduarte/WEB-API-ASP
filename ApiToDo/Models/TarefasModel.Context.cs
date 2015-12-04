@@ -18,6 +18,7 @@ namespace ApiToDo.Models
         public tarefasEntitiesNew()
             : base("name=tarefasEntitiesNew")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
